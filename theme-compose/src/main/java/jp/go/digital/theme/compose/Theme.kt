@@ -27,6 +27,7 @@ private val LightColorPalette = lightColors(
 @Composable
 fun DaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
+    isJaLanguage: Boolean = true,
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) {
@@ -34,10 +35,15 @@ fun DaTheme(
     } else {
         LightColorPalette
     }
+    val typography = if (isJaLanguage) {
+        Typography.ja
+    } else {
+        Typography.en
+    }
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = typography,
         shapes = Shapes,
         content = content
     )
